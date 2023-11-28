@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from store.views import cliente_view, produto_view, categoriaProdutos_view
+from store.views import cliente_view, produto_view, categoriaProdutos_view, vendedor_view
 from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
@@ -12,7 +12,10 @@ urlpatterns = [
     path('produtos/<int:id>', produto_view.lista_produto_id),
 
     path('categorias/', categoriaProdutos_view.lista_categorias),
-    path('categorias/<int:id>', categoriaProdutos_view.lista_categorias_id)
+    path('categorias/<int:id>', categoriaProdutos_view.lista_categorias_id),
+
+    path('vendedores/', vendedor_view.lista_vendedor),
+    path('vendedores/<int:id>', vendedor_view.lista_vendedor_id)
 ]
 
 
