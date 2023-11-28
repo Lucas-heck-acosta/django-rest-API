@@ -1,14 +1,20 @@
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Cliente
-from .serializers import ClienteSerializer
 from rest_framework.decorators import api_view
+from ..models.cliente import Cliente
+from ..serializers.cliente_serializer import ClienteSerializer
 
 
 @api_view(['GET', 'POST'])
 def lista_cliente(request, format=None):
     if request.method == 'GET':
-        clientes = Cliente.objects.all()
+        nome = request.query_params.get('nome', None)
+
+        if nome:
+            clientes = Cliente.objects.filter(nome__icontains=nome)
+        else:
+            clientes = Cliente.objects.all()
+
         serializer = ClienteSerializer(clientes, many=True)
         return Response(serializer.data)
     elif request.method == 'POST':
