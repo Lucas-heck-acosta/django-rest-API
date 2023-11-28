@@ -11,6 +11,7 @@ def lista_produto(request, format=None):
         nome = request.query_params.get('nome', None)
         preco_minimo = request.query_params.get('preco_minimo', None)
         preco_maximo = request.query_params.get('preco_maximo', None)
+        categoria = request.query_params.get('categoria', None)
 
         produtos = Produto.objects.all()
 
@@ -22,6 +23,9 @@ def lista_produto(request, format=None):
 
         if preco_maximo:
             produtos = produtos.filter(preco__lte=preco_maximo)
+
+        if categoria:
+            produtos = produtos.filter(categoria__nome__icontains=categoria)
 
         serializer = ProdutoSerializer(produtos, many=True)
         return Response(serializer.data)
