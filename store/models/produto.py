@@ -15,4 +15,4 @@ class Produto(models.Model):
         CategoriaProduto, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.nome
+        return self.nome + ' - R$' + str(self.preco)
