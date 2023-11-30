@@ -1,0 +1,7 @@
+Tecnologias utilizadas:
+
+Django
+Django REST
+Python
+SQLite
+ReportLab (para geraçao do PDF)

@@ -1,8 +1,6 @@
 from io import BytesIO
 from datetime import datetime
 from django.http import HttpResponse
-from django.template.loader import get_template
-from django.views import View
 from reportlab.pdfgen import canvas
 from rest_framework.views import APIView
 from ..models.venda import Venda
@@ -11,7 +9,7 @@ from ..models.produto import Produto
 
 
 class RelatorioVendasPDF(APIView):
-    def get(self, request, *args, **kwargs):
+    def get(self, request):
         cliente = self.request.query_params.get('cliente', None)
         vendedor = self.request.query_params.get('vendedor', None)
         data_venda_min_str = self.request.query_params.get(
