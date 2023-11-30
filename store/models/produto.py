@@ -1,5 +1,5 @@
+from xml.dom import ValidationErr
 from django.db import models
-
 from store.models.categoriaProduto import CategoriaProduto
 
 

@@ -1,8 +1,5 @@
 from rest_framework import serializers
 from ..models.venda import Venda
-from ..serializers.cliente_serializer import ClienteSerializer
-from ..serializers.vendedor_serializer import VendedorSerializer
-from ..serializers.produtoVenda_serializer import ProdutoVendaSerializer
 
 
 class VendaSerializer(serializers.ModelSerializer):
@@ -18,9 +15,3 @@ class VendaSerializer(serializers.ModelSerializer):
 
     def get_vendedor(self, obj):
         return obj.vendedor.nome if obj.vendedor else None
-
-    def to_representation(self, instance):
-        representation = super().to_representation(instance)
-        representation['cliente'] = self.get_cliente(instance)
-        representation['vendedor'] = self.get_vendedor(instance)
-        return representation
