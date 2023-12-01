@@ -65,7 +65,6 @@ class RelatorioVendasPDF(APIView):
                     pass
 
             p.drawString(120, y, f"Total Price: R${total_price}")
-            p.line(100, y - 15, 500, y - 5)
 
             y -= 30
 

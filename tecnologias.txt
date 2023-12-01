@@ -5,3 +5,4 @@ Django REST
 Python
 SQLite
 ReportLab (para geraçao do PDF)
+Django TestCase
